@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cg4tpax432c0p"
-path="res://.godot/imported/Melon.png-e2e0a664fbabbb5d6a96945e6b5f8ccf.ctex"
+path="res://.godot/imported/Melon.png-3799591134692419a0c630b2aa8b9f65.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://CSCI-4350-Project/assets/Items/Fruits/Melon.png"
-dest_files=["res://.godot/imported/Melon.png-e2e0a664fbabbb5d6a96945e6b5f8ccf.ctex"]
+source_file="res://assets/Items/Fruits/Melon.png"
+dest_files=["res://.godot/imported/Melon.png-3799591134692419a0c630b2aa8b9f65.ctex"]
 
 [params]
 
