@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://borequqlu7jx8"
-path="res://.godot/imported/On (32x10).png-9c016121ff6ca4530800e8a1e243b97f.ctex"
+path="res://.godot/imported/On (32x10).png-394532adeca5552426863e666bebd279.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://CSCI-4350-Project/assets/Traps/Falling Platforms/On (32x10).png"
-dest_files=["res://.godot/imported/On (32x10).png-9c016121ff6ca4530800e8a1e243b97f.ctex"]
+source_file="res://assets/Traps/Falling Platforms/On (32x10).png"
+dest_files=["res://.godot/imported/On (32x10).png-394532adeca5552426863e666bebd279.ctex"]
 
 [params]
 

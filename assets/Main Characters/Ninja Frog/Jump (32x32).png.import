@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d4jbub8fmjb6d"
-path="res://.godot/imported/Jump (32x32).png-db05aef9c3e98ef7d10cf46a8ffe5e85.ctex"
+path="res://.godot/imported/Jump (32x32).png-48c7a8d7e50ec7fbc40be141fb352fe8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://CSCI-4350-Project/assets/Main Characters/Ninja Frog/Jump (32x32).png"
-dest_files=["res://.godot/imported/Jump (32x32).png-db05aef9c3e98ef7d10cf46a8ffe5e85.ctex"]
+source_file="res://assets/Main Characters/Ninja Frog/Jump (32x32).png"
+dest_files=["res://.godot/imported/Jump (32x32).png-48c7a8d7e50ec7fbc40be141fb352fe8.ctex"]
 
 [params]
 

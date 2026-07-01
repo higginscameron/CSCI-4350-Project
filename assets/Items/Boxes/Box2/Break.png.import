@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dmg2mg4igfucd"
-path="res://.godot/imported/Break.png-7e3edf1e2b5f2490348810d7881f7bce.ctex"
+path="res://.godot/imported/Break.png-4f018e2fd671e579fa0b2f645c424f75.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://CSCI-4350-Project/assets/Items/Boxes/Box2/Break.png"
-dest_files=["res://.godot/imported/Break.png-7e3edf1e2b5f2490348810d7881f7bce.ctex"]
+source_file="res://assets/Items/Boxes/Box2/Break.png"
+dest_files=["res://.godot/imported/Break.png-4f018e2fd671e579fa0b2f645c424f75.ctex"]
 
 [params]
 

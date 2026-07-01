@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dclg5m2v6iuh4"
-path="res://.godot/imported/On (16x32).png-b9fb8a9cc778807224d37e690d967388.ctex"
+path="res://.godot/imported/On (16x32).png-cc6ab36327664d6e7038e543eb382c8a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://CSCI-4350-Project/assets/Traps/Fire/On (16x32).png"
-dest_files=["res://.godot/imported/On (16x32).png-b9fb8a9cc778807224d37e690d967388.ctex"]
+source_file="res://assets/Traps/Fire/On (16x32).png"
+dest_files=["res://.godot/imported/On (16x32).png-cc6ab36327664d6e7038e543eb382c8a.ctex"]
 
 [params]
 
