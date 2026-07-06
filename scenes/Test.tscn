@@ -1,8 +1,0 @@
-[gd_scene format=3 uid="uid://cq7d2rdrd4cfk"]
-
-[node name="Node2D" type="Node2D" unique_id=1707129033]
-
-[node name="Window" type="Window" parent="." unique_id=23454493]
-oversampling_override = 1.0
-position = Vector2i(-270, -152)
-size = Vector2i(538, 328)
