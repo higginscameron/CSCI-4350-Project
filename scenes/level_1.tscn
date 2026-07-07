@@ -1,15 +1,21 @@
-[gd_scene format=3 uid="uid://bftgyhxkj8xhe"]
+[gd_scene format=3 uid="uid://bb52b1u554sb7"]
 
 [ext_resource type="Script" uid="uid://ddgcxtwj0e7cb" path="res://scenes/level_generator.gd" id="1_014kd"]
 [ext_resource type="Texture2D" uid="uid://bnsi6djwvmibv" path="res://maps/Terrain/Terrain (16x16).png" id="2_bswci"]
+[ext_resource type="PackedScene" uid="uid://bs87mqtpc7ufg" path="res://actors/player/player.tscn" id="3_rus8k"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rus8k"]
 texture = ExtResource("2_bswci")
 0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-0.59353447, 8, -0.09892273, 0, 8, -0.2967682, 8, 8, -8, 8)
 4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 6:0/0 = 0
 6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 7:0/0 = 0
@@ -26,10 +32,14 @@ texture = ExtResource("2_bswci")
 18:0/0 = 0
 19:0/0 = 0
 0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:1/0 = 0
 2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 4:1/0 = 0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 6:1/0 = 0
 7:1/0 = 0
 8:1/0 = 0
@@ -45,8 +55,11 @@ texture = ExtResource("2_bswci")
 18:1/0 = 0
 19:1/0 = 0
 0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 6:2/0 = 0
 7:2/0 = 0
 8:2/0 = 0
@@ -165,4 +178,11 @@ sources/0 = SubResource("TileSetAtlasSource_rus8k")
 script = ExtResource("1_014kd")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=74130582]
+position = Vector2(-1, -1)
 tile_set = SubResource("TileSet_5xbjy")
+
+[node name="Player" parent="." unique_id=1667047706 instance=ExtResource("3_rus8k")]
+position = Vector2(172, -236)
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=375050667]
+zoom = Vector2(2, 2)
