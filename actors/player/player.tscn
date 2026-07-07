@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://fixpp5ql24js"]
+[gd_scene format=3 uid="uid://bs87mqtpc7ufg"]
 
-[ext_resource type="Script" path="res://actors/player/player.gd" id="1_nvxhs"]
+[ext_resource type="Script" uid="uid://ckkdl3xjrja3a" path="res://actors/player/player.gd" id="1_nvxhs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ilk7j"]
 size = Vector2(14, 28)
@@ -12,4 +12,3 @@ script = ExtResource("1_nvxhs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2120343584]
 shape = SubResource("RectangleShape2D_ilk7j")
-disabled = true
