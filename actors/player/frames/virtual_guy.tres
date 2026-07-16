@@ -201,7 +201,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dq8pf")
 }],
-"loop": true,
+"loop": false,
 "name": &"double_jump",
 "speed": 15.0
 }, {
@@ -235,7 +235,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_nhmfs")
 }],
-"loop": true,
+"loop": false,
 "name": &"hit",
 "speed": 15.0
 }, {
@@ -342,7 +342,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_060wx")
 }],
-"loop": true,
+"loop": false,
 "name": &"wall_jump",
 "speed": 15.0
 }]
