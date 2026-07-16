@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://ddgcxtwj0e7cb" path="res://scenes/level_generator.gd" id="1_014kd"]
 [ext_resource type="Texture2D" uid="uid://bnsi6djwvmibv" path="res://maps/Terrain/Terrain (16x16).png" id="2_bswci"]
 [ext_resource type="PackedScene" uid="uid://bs87mqtpc7ufg" path="res://actors/player/player.tscn" id="3_rus8k"]
+[ext_resource type="Script" uid="uid://sg35pbwlo4ix" path="res://scenes/pause.gd" id="4_5xbjy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rus8k"]
 texture = ExtResource("2_bswci")
@@ -172,6 +173,98 @@ texture = ExtResource("2_bswci")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_rus8k")
 
+[sub_resource type="Animation" id="Animation_4nkto"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.8, 0.8)]
+}
+
+[sub_resource type="Animation" id="Animation_fcfvj"]
+resource_name = "pause_in"
+length = 0.3
+step = 0.0333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 0.53588665),
+"update": 0,
+"values": [Vector2(0.8, 0.8), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_pa8r4"]
+resource_name = "pause_out"
+length = 0.3
+step = 0.0333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 0.53588665),
+"update": 0,
+"values": [Vector2(0.8, 0.8), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_15mv3"]
+_data = {
+&"RESET": SubResource("Animation_4nkto"),
+&"pause_in": SubResource("Animation_fcfvj"),
+&"pause_out": SubResource("Animation_pa8r4")
+}
+
 [node name="Level1" type="Node2D" unique_id=1839125871]
 
 [node name="LevelGenerator" type="Node" parent="." unique_id=2011098312]
@@ -186,3 +279,71 @@ position = Vector2(172, -236)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=375050667]
 zoom = Vector2(2, 2)
+
+[node name="PauseLayer" type="CanvasLayer" parent="." unique_id=294157448]
+process_mode = 3
+
+[node name="Pause" type="Control" parent="PauseLayer" unique_id=660066186]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_5xbjy")
+
+[node name="ColorRect" type="ColorRect" parent="PauseLayer/Pause" unique_id=702747968]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="MarginContainer" type="MarginContainer" parent="PauseLayer/Pause" unique_id=275459108]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+pivot_offset = Vector2(60, 81.5)
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseLayer/Pause/MarginContainer" unique_id=244477715]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Resume" type="Button" parent="PauseLayer/Pause/MarginContainer/VBoxContainer" unique_id=1372943694]
+process_mode = 3
+layout_mode = 2
+text = "Resume"
+
+[node name="Settings" type="Button" parent="PauseLayer/Pause/MarginContainer/VBoxContainer" unique_id=1786625980]
+process_mode = 3
+layout_mode = 2
+text = "Settings"
+
+[node name="Quit" type="Button" parent="PauseLayer/Pause/MarginContainer/VBoxContainer" unique_id=853423875]
+process_mode = 3
+layout_mode = 2
+text = "Quit"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PauseLayer/Pause" unique_id=302715165]
+process_mode = 3
+libraries/ = SubResource("AnimationLibrary_15mv3")
+
+[connection signal="pressed" from="PauseLayer/Pause/MarginContainer/VBoxContainer/Resume" to="PauseLayer/Pause" method="_on_resume_pressed"]
+[connection signal="pressed" from="PauseLayer/Pause/MarginContainer/VBoxContainer/Quit" to="PauseLayer/Pause" method="_on_quit_pressed"]
