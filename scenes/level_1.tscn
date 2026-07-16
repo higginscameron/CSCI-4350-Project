@@ -1,8 +1,8 @@
-[gd_scene format=3 uid="uid://bb52b1u554sb7"]
+[gd_scene format=3 uid="uid://b64eo80c5k3a6"]
 
 [ext_resource type="Script" uid="uid://ddgcxtwj0e7cb" path="res://scenes/level_generator.gd" id="1_014kd"]
 [ext_resource type="Texture2D" uid="uid://bnsi6djwvmibv" path="res://maps/Terrain/Terrain (16x16).png" id="2_bswci"]
-[ext_resource type="PackedScene" uid="uid://bs87mqtpc7ufg" path="res://actors/player/player.tscn" id="3_rus8k"]
+[ext_resource type="PackedScene" uid="uid://fixpp5ql24js" path="res://actors/player/player.tscn" id="3_rus8k"]
 [ext_resource type="Script" uid="uid://sg35pbwlo4ix" path="res://scenes/pause.gd" id="4_5xbjy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rus8k"]
