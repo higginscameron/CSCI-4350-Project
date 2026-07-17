@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dc818j0k37vqe" path="res://scenes/Background/Blue.png" id="1_5xbjy"]
 [ext_resource type="Texture2D" uid="uid://bnsi6djwvmibv" path="res://maps/Terrain/Terrain (16x16).png" id="2_bswci"]
 [ext_resource type="PackedScene" uid="uid://bs87mqtpc7ufg" path="res://actors/player/player.tscn" id="3_rus8k"]
-[ext_resource type="Script" path="res://scenes/pause.gd" id="4_5xbjy"]
+[ext_resource type="Script" uid="uid://sg35pbwlo4ix" path="res://scenes/pause.gd" id="4_5xbjy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rus8k"]
 texture = ExtResource("2_bswci")
@@ -306,7 +306,6 @@ zoom = Vector2(8, 8)
 
 [node name="PauseLayer" type="CanvasLayer" parent="." unique_id=294157448]
 process_mode = 3
-visible = false
 
 [node name="Pause" type="Control" parent="PauseLayer" unique_id=660066186]
 process_mode = 3
