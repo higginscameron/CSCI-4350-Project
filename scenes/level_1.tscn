@@ -2,15 +2,15 @@
 
 [ext_resource type="Texture2D" uid="uid://dc818j0k37vqe" path="res://scenes/Background/Blue.png" id="1_5xbjy"]
 [ext_resource type="Texture2D" uid="uid://bnsi6djwvmibv" path="res://maps/Terrain/Terrain (16x16).png" id="2_bswci"]
-[ext_resource type="PackedScene" uid="uid://fixpp5ql24js" path="res://actors/player/player.tscn" id="3_rus8k"]
+[ext_resource type="PackedScene" uid="uid://bs87mqtpc7ufg" path="res://actors/player/player.tscn" id="3_rus8k"]
 [ext_resource type="PackedScene" uid="uid://bwhnogy2vjr5a" path="res://actors/player/health/health_bar.tscn" id="4_4nkto"]
 [ext_resource type="Script" uid="uid://sg35pbwlo4ix" path="res://scenes/pause.gd" id="4_5xbjy"]
 [ext_resource type="PackedScene" path="res://actors/traps/spikes.tscn" id="6_fcfvj"]
-[ext_resource type="PackedScene" uid="uid://gli5nttuh6g6" path="res://actors/traps/saw.tscn" id="6_pa8r4"]
-[ext_resource type="Texture2D" uid="uid://dn6je6th7mrkx" path="res://assets/Menu/Buttons/Play.png" id="10_playicon"]
-[ext_resource type="Texture2D" uid="uid://caj1enip18510" path="res://scenes/Background/Pause_Menu1.png" id="10_pausebg"]
-[ext_resource type="Texture2D" uid="uid://cxj1b4onp01rw" path="res://assets/Menu/Buttons/Settings.png" id="10_settingsicon"]
+[ext_resource type="PackedScene" path="res://actors/traps/saw.tscn" id="6_pa8r4"]
 [ext_resource type="AudioStream" uid="uid://dlq8rqravocnr" path="res://audio/LEGO Ninjago Overture (Original Score).mp3" id="10_music"]
+[ext_resource type="Texture2D" uid="uid://caj1enip18510" path="res://scenes/Background/Pause_Menu1.png" id="10_pausebg"]
+[ext_resource type="Texture2D" uid="uid://dn6je6th7mrkx" path="res://assets/Menu/Buttons/Play.png" id="10_playicon"]
+[ext_resource type="Texture2D" uid="uid://cxj1b4onp01rw" path="res://assets/Menu/Buttons/Settings.png" id="10_settingsicon"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rus8k"]
 texture = ExtResource("2_bswci")
@@ -207,6 +207,18 @@ texture = ExtResource("2_bswci")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_rus8k")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pausebtn"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.101960786, 0.16470589, 0.36862746, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
 [sub_resource type="Animation" id="Animation_4nkto"]
 length = 0.001
 tracks/0/type = "value"
@@ -299,18 +311,6 @@ _data = {
 &"pause_out": SubResource("Animation_pa8r4")
 }
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pausebtn"]
-bg_color = Color(1, 1, 1, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.101960786, 0.16470589, 0.36862746, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-
 [node name="Level1" type="Node2D" unique_id=1839125871]
 
 [node name="Background" type="Sprite2D" parent="." unique_id=100923810]
@@ -338,8 +338,6 @@ process_mode = 3
 
 [node name="Pause" type="Control" parent="PauseLayer" unique_id=660066186]
 process_mode = 3
-modulate = Color(0.3137255, 0.3137255, 0.3137255, 0.47058824)
-self_modulate = Color(0.3137255, 0.3137255, 0.3137255, 0.47058824)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -362,27 +360,12 @@ expand_mode = 1
 stretch_mode = 6
 
 [node name="ColorRect" type="ColorRect" parent="PauseLayer/Pause" unique_id=702747968]
+modulate = Color(1, 1, 1, 0.12156863)
+self_modulate = Color(1, 1, 1, 0.1254902)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -48.0
-offset_top = 176.0
-offset_right = -48.0
-offset_bottom = 176.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(1, 1, 1, 0)
-
-[node name="ColorRect2" type="ColorRect" parent="PauseLayer/Pause" unique_id=933584363]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -48.0
-offset_top = 176.0
-offset_right = -48.0
-offset_bottom = 176.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0)
@@ -410,6 +393,7 @@ theme_override_constants/margin_bottom = 25
 [node name="VBoxContainer" type="VBoxContainer" parent="PauseLayer/Pause/MarginContainer" unique_id=244477715]
 layout_mode = 2
 theme_override_constants/separation = 10
+alignment = 1
 
 [node name="Resume" type="Button" parent="PauseLayer/Pause/MarginContainer/VBoxContainer" unique_id=1372943694]
 process_mode = 3
