@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://bwhnogy2vjr5a"]
-
-[ext_resource type="Script" uid="uid://c6ek1ipcsmiol" path="res://actors/player/health/health_bar.gd" id="1_0pab3"]
-
-[node name="HealthBar" type="ProgressBar" unique_id=1982605492]
-script = ExtResource("1_0pab3")

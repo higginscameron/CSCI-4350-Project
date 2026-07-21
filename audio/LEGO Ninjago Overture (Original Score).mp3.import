@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dlq8rqravocnr"
+path="res://.godot/imported/LEGO Ninjago Overture (Original Score).mp3-ea5e758edff9e1d02bb1563d87d531a9.mp3str"
+
+[deps]
+
+source_file="res://audio/LEGO Ninjago Overture (Original Score).mp3"
+dest_files=["res://.godot/imported/LEGO Ninjago Overture (Original Score).mp3-ea5e758edff9e1d02bb1563d87d531a9.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
