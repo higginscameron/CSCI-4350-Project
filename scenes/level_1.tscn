@@ -4,6 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://bnsi6djwvmibv" path="res://maps/Terrain/Terrain (16x16).png" id="2_bswci"]
 [ext_resource type="PackedScene" uid="uid://bs87mqtpc7ufg" path="res://actors/player/player.tscn" id="3_rus8k"]
 [ext_resource type="Script" uid="uid://sg35pbwlo4ix" path="res://scenes/pause.gd" id="4_5xbjy"]
+[ext_resource type="Texture2D" uid="uid://dn6je6th7mrkx" path="res://assets/Menu/Buttons/Play.png" id="5_4nkto"]
+[ext_resource type="Texture2D" uid="uid://caj1enip18510" path="res://scenes/Background/Pause_Menu1.png" id="5_pa8r4"]
+[ext_resource type="Texture2D" uid="uid://cxj1b4onp01rw" path="res://assets/Menu/Buttons/Settings.png" id="6_fcfvj"]
+[ext_resource type="AudioStream" uid="uid://dlq8rqravocnr" path="res://audio/LEGO Ninjago Overture (Original Score).mp3" id="8_15mv3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rus8k"]
 texture = ExtResource("2_bswci")
@@ -193,6 +197,18 @@ texture = ExtResource("2_bswci")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_rus8k")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pa8r4"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.101960786, 0.16470589, 0.36862746, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
 [sub_resource type="Animation" id="Animation_4nkto"]
 length = 0.001
 tracks/0/type = "value"
@@ -309,8 +325,6 @@ process_mode = 3
 
 [node name="Pause" type="Control" parent="PauseLayer" unique_id=660066186]
 process_mode = 3
-modulate = Color(0.3137255, 0.3137255, 0.3137255, 0.47058824)
-self_modulate = Color(0.3137255, 0.3137255, 0.3137255, 0.47058824)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -319,7 +333,22 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("4_5xbjy")
 
+[node name="TextureRect" type="TextureRect" parent="PauseLayer/Pause" unique_id=274359248]
+modulate = Color(1, 1, 1, 0.5686275)
+self_modulate = Color(1, 1, 1, 0.5686275)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_pa8r4")
+expand_mode = 1
+stretch_mode = 6
+
 [node name="ColorRect" type="ColorRect" parent="PauseLayer/Pause" unique_id=702747968]
+modulate = Color(1, 1, 1, 0.12156863)
+self_modulate = Color(1, 1, 1, 0.1254902)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -351,25 +380,53 @@ theme_override_constants/margin_bottom = 25
 [node name="VBoxContainer" type="VBoxContainer" parent="PauseLayer/Pause/MarginContainer" unique_id=244477715]
 layout_mode = 2
 theme_override_constants/separation = 10
+alignment = 1
 
 [node name="Resume" type="Button" parent="PauseLayer/Pause/MarginContainer/VBoxContainer" unique_id=1372943694]
 process_mode = 3
+custom_minimum_size = Vector2(220, 60)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.101960786, 0.16470589, 0.36862746, 1)
+theme_override_colors/font_hover_color = Color(0.9411765, 0.9411765, 0.9411765, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.8784314, 0.8784314, 0.8784314, 1)
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_pa8r4")
 text = "Resume"
+icon = ExtResource("5_4nkto")
+expand_icon = true
 
 [node name="Settings" type="Button" parent="PauseLayer/Pause/MarginContainer/VBoxContainer" unique_id=1786625980]
 process_mode = 3
+custom_minimum_size = Vector2(220, 60)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.101960786, 0.16470589, 0.36862746, 1)
+theme_override_colors/font_hover_color = Color(0.9411765, 0.9411765, 0.9411765, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.8784314, 0.8784314, 0.8784314, 1)
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_pa8r4")
 text = "Settings"
+icon = ExtResource("6_fcfvj")
+expand_icon = true
 
 [node name="Quit" type="Button" parent="PauseLayer/Pause/MarginContainer/VBoxContainer" unique_id=853423875]
 process_mode = 3
+custom_minimum_size = Vector2(220, 60)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.101960786, 0.16470589, 0.36862746, 1)
+theme_override_colors/font_hover_color = Color(0.9411765, 0.9411765, 0.9411765, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.8784314, 0.8784314, 0.8784314, 1)
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_pa8r4")
 text = "Quit"
+expand_icon = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PauseLayer/Pause" unique_id=302715165]
 process_mode = 3
 libraries/ = SubResource("AnimationLibrary_15mv3")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=128500090]
+stream = ExtResource("8_15mv3")
+autoplay = true
 
 [connection signal="pressed" from="PauseLayer/Pause/MarginContainer/VBoxContainer/Resume" to="PauseLayer/Pause" method="_on_resume_pressed"]
 [connection signal="pressed" from="PauseLayer/Pause/MarginContainer/VBoxContainer/Quit" to="PauseLayer/Pause" method="_on_quit_pressed"]
