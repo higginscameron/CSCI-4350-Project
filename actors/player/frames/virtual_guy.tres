@@ -1,11 +1,11 @@
 [gd_resource type="SpriteFrames" format=3 uid="uid://crddaj1c8ffu0"]
 
 [ext_resource type="Texture2D" uid="uid://qjjg43i8gg4i" path="res://assets/Main Characters/Virtual Guy/Double Jump (32x32).png" id="1_5kmam"]
-[ext_resource type="Texture2D" uid="uid://c41txdxucbkf1" path="res://assets/Main Characters/Virtual Guy/Fall (32x32).png" id="2_em8c4"]
-[ext_resource type="Texture2D" uid="uid://b3ogexbt6qdoh" path="res://assets/Main Characters/Virtual Guy/Hit (32x32).png" id="3_w4hcw"]
+[ext_resource type="Texture2D" uid="uid://cnhig36xohn4t" path="res://Levels.png" id="2_em8c4"]
+[ext_resource type="Texture2D" uid="uid://d3yiu1p0bpass" path="res://Next.png" id="3_w4hcw"]
 [ext_resource type="Texture2D" uid="uid://jn1lpognpk4f" path="res://assets/Main Characters/Virtual Guy/Idle (32x32).png" id="4_jnapl"]
-[ext_resource type="Texture2D" uid="uid://bp8kw8rqgbmup" path="res://assets/Main Characters/Virtual Guy/Jump (32x32).png" id="5_rvkob"]
-[ext_resource type="Texture2D" uid="uid://wo7qk5bqf6gv" path="res://assets/Main Characters/Virtual Guy/Run (32x32).png" id="6_m6klj"]
+[ext_resource type="Texture2D" uid="uid://dpxw2mre4q464" path="res://Previous.png" id="5_rvkob"]
+[ext_resource type="Texture2D" uid="uid://c4hnc6j1ar78t" path="res://Restart.png" id="6_m6klj"]
 [ext_resource type="Texture2D" uid="uid://cgg28jus6ec03" path="res://assets/Main Characters/Virtual Guy/Wall Jump (32x32).png" id="7_0bx14"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_go107"]

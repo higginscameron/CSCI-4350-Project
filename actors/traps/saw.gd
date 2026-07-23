@@ -11,6 +11,7 @@ var _progress: float = 0.0
 var _direction_sign: float = 1.0
 
 func _ready() -> void:
+	add_to_group("hazards")
 	_start_position = position
 	body_entered.connect(_on_body_entered)
 
