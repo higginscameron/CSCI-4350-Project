@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://0qba16j8bu3t"]
 
-# test comment
 [ext_resource type="Script" uid="uid://u5n6jin41614" path="res://scenes/MainMenu.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://bg3l1v75y4371" path="res://assets/Menu/Main Menu.png" id="2_brfhc"]
 
