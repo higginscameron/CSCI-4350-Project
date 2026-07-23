@@ -1,6 +1,37 @@
 [gd_scene format=3 uid="uid://0qba16j8bu3t"]
 
+# test comment
 [ext_resource type="Script" uid="uid://u5n6jin41614" path="res://scenes/MainMenu.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://bg3l1v75y4371" path="res://assets/Menu/Main Menu.png" id="2_brfhc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vscqr"]
+bg_color = Color(0.004019165, 0.004019165, 0.004019165, 0)
+
+[sub_resource type="SystemFont" id="SystemFont_j7qs6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_idicr"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i08mn"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wlbmf"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0, 0, 0, 1)
 
 [node name="MainMenu" type="Control" unique_id=249887266]
 layout_mode = 3
@@ -11,6 +42,15 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1")
 
+[node name="TextureRect" type="TextureRect" parent="." unique_id=426543247]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_brfhc")
+
 [node name="Background" type="ColorRect" parent="." unique_id=539157440]
 layout_mode = 1
 anchors_preset = 15
@@ -18,7 +58,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.08, 0.08, 0.12, 1)
+color = Color(8.826238e-05, 8.826238e-05, 0.00017288172, 0)
 
 [node name="Center" type="CenterContainer" parent="." unique_id=1635110972]
 layout_mode = 1
@@ -31,6 +71,7 @@ grow_vertical = 2
 [node name="Panel" type="Panel" parent="Center" unique_id=1674193968]
 custom_minimum_size = Vector2(760, 440)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vscqr")
 
 [node name="MenuVBox" type="VBoxContainer" parent="Center/Panel" unique_id=109722215]
 layout_mode = 1
@@ -50,6 +91,10 @@ alignment = 1
 
 [node name="Title" type="Label" parent="Center/Panel/MenuVBox" unique_id=1329856740]
 layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 40
+theme_override_fonts/font = SubResource("SystemFont_j7qs6")
+theme_override_font_sizes/font_size = 120
 text = "Pixel Pals"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -58,16 +103,25 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(520, 70)
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_idicr")
 text = "Start"
 
 [node name="Options" type="Button" parent="Center/Panel/MenuVBox" unique_id=348065610]
 custom_minimum_size = Vector2(520, 70)
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_i08mn")
 text = "Options"
 
 [node name="Quit" type="Button" parent="Center/Panel/MenuVBox" unique_id=1634203028]
 custom_minimum_size = Vector2(520, 70)
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_wlbmf")
 text = "Quit"
