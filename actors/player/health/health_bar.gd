@@ -88,7 +88,7 @@ func _physics_process(_delta: float) -> void:
 	var pixels = floor((bar_width * health_percent) / segment_size) * segment_size
 	health_bar_fill.size.x = max(pixels, 0)
 
-	# Smooth color transition
+	# color transition
 	var fill_style := health_bar_fill.get_theme_stylebox("panel").duplicate() as StyleBoxFlat
 	fill_style.bg_color = _get_health_color(health_percent)
 	health_bar_fill.add_theme_stylebox_override("panel", fill_style)
