@@ -18,6 +18,7 @@ var health = 3
 var spawn_position = Vector2.ZERO
 var is_hit = false
 var jump_count = 0
+var is_dying = false
 
 func _ready() -> void:
 	add_to_group("player")
@@ -79,6 +80,9 @@ func set_character(character_name: String) -> void:
 
 
 func take_damage(amount: int) -> void:
+	if is_dying:
+		return
+
 	health -= amount
 	is_hit = true
 	$AnimatedSprite2D.play("hit")
@@ -92,11 +96,39 @@ func _on_animation_finished() -> void:
 
 
 func die() -> void:
-	queue_free()
+	if is_dying:
+		return
+
+	is_dying = true
+	$AnimatedSprite2D.play("hit")
+	velocity = Vector2.ZERO
+	set_physics_process(false)
+
+	var tween = create_tween()
+	tween.tween_property(self, "modulate", Color(1, 0.35, 0.35, 0.5), 0.2)
+	tween.tween_property(self, "modulate", Color(1, 1, 1, 0.1), 0.15)
+	tween.tween_callback(func():
+		modulate = Color(1, 1, 1, 1)
+		$AnimatedSprite2D.modulate = Color(1, 1, 1, 1)
+	)
+	$AnimatedSprite2D.modulate = Color(1, 1, 1, 1)
+	await get_tree().create_timer(0.35).timeout
+	$AnimatedSprite2D.modulate = Color(1.4, 1.4, 1.4, 1.0)
+	await get_tree().create_timer(0.08).timeout
+	$AnimatedSprite2D.modulate = Color(1, 1, 1, 1)
+	await get_tree().create_timer(0.2).timeout
+
+	respawn()
 
 
 func respawn() -> void:
 	health = 3
 	is_hit = false
+	is_dying = false
 	global_position = spawn_position
 	velocity = Vector2.ZERO
+	modulate = Color(1, 1, 1, 1)
+	$AnimatedSprite2D.modulate = Color(1, 1, 1, 1)
+	scale = Vector2.ONE
+	set_physics_process(true)
+	$AnimatedSprite2D.play("idle")
