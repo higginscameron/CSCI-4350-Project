@@ -3,9 +3,8 @@ extends CharacterBody2D
 const SPEED = 200.0
 const JUMP_VELOCITY = -400.0
 const GRAVITY = 980.0
+const MAX_JUMPS = 2
 
-# Each rescued friend becomes a playable character with the same animation
-# names, so switching is just a matter of swapping the SpriteFrames resource.
 const CHARACTER_FRAMES = {
 	"Pink Man": preload("res://actors/player/frames/pink_man.tres"),
 	"Mask Dude": preload("res://actors/player/frames/mask_dude.tres"),
@@ -18,6 +17,7 @@ const CHARACTER_FRAMES = {
 var health = 3
 var spawn_position = Vector2.ZERO
 var is_hit = false
+var jump_count = 0
 
 func _ready() -> void:
 	add_to_group("player")
@@ -27,16 +27,16 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	# Gravity
-	if not is_on_floor():
+	if is_on_floor():
+		jump_count = 0
+	else:
 		velocity.y += GRAVITY * delta
 
-	# Jump
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and jump_count < MAX_JUMPS:
 		velocity.y = JUMP_VELOCITY
+		jump_count += 1
 
-	# Left / right movement
-	var direction = Input.get_axis("ui_left", "ui_right")
+	var direction = Input.get_axis("move_left", "move_right")
 	if direction != 0:
 		velocity.x = direction * SPEED
 	else:
@@ -47,7 +47,6 @@ func _physics_process(delta: float) -> void:
 
 
 func _update_animation(direction: float) -> void:
-	# Don't let idle/run/jump/fall interrupt a hit reaction mid-play.
 	if is_hit:
 		return
 
@@ -55,7 +54,10 @@ func _update_animation(direction: float) -> void:
 		$AnimatedSprite2D.flip_h = direction < 0
 
 	if not is_on_floor():
-		_play("jump" if velocity.y < 0 else "fall")
+		if velocity.y < 0:
+			_play("double_jump" if jump_count >= 2 else "jump")
+		else:
+			_play("fall")
 	elif direction != 0:
 		_play("run")
 	else:
@@ -63,7 +65,6 @@ func _update_animation(direction: float) -> void:
 
 
 func _play(anim_name: String) -> void:
-	# Avoid restarting an animation that's already playing.
 	if $AnimatedSprite2D.animation != anim_name:
 		$AnimatedSprite2D.play(anim_name)
 
