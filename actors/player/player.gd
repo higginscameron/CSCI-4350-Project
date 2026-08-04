@@ -3,6 +3,7 @@ extends CharacterBody2D
 const SPEED = 200.0
 const JUMP_VELOCITY = -400.0
 const GRAVITY = 980.0
+const WALL_SLIDE_GRAVITY = 150.0
 const MAX_JUMPS = 2
 
 const CHARACTER_FRAMES = {
@@ -19,6 +20,7 @@ var spawn_position = Vector2.ZERO
 var is_hit = false
 var jump_count = 0
 var is_dying = false
+var is_wall_sliding = false
 
 func _ready() -> void:
 	add_to_group("player")
@@ -28,14 +30,40 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	var is_touching_wall = is_on_wall()
+
+	# Update wall slide state
 	if is_on_floor():
 		jump_count = 0
+		is_wall_sliding = false
+	elif is_touching_wall and velocity.y > 0:
+		is_wall_sliding = true
+	else:
+		is_wall_sliding = false
+
+	# Apply gravity (reduced on wall slide)
+	if is_wall_sliding:
+		velocity.y += WALL_SLIDE_GRAVITY * delta
 	else:
 		velocity.y += GRAVITY * delta
 
-	if Input.is_action_just_pressed("jump") and jump_count < MAX_JUMPS:
-		velocity.y = JUMP_VELOCITY
-		jump_count += 1
+	# Handle jumping
+	if Input.is_action_just_pressed("jump"):
+		if is_on_floor():
+			# Ground jump
+			velocity.y = JUMP_VELOCITY
+			jump_count += 1
+		elif is_touching_wall and not is_on_floor():
+			# Wall jump: push away from wall
+			velocity.y = JUMP_VELOCITY
+			var wall_normal = get_wall_normal()
+			velocity.x = wall_normal.x * SPEED
+			jump_count = 0
+			_play("wall_jump")
+		elif jump_count < MAX_JUMPS:
+			# Air/double jump
+			velocity.y = JUMP_VELOCITY
+			jump_count += 1
 
 	var direction = Input.get_axis("move_left", "move_right")
 	if direction != 0:
@@ -54,8 +82,14 @@ func _update_animation(direction: float) -> void:
 	if direction != 0:
 		$AnimatedSprite2D.flip_h = direction < 0
 
+	# Only protect wall_jump animation while moving upward
+	if $AnimatedSprite2D.animation == "wall_jump" and velocity.y < 0:
+		return
+
 	if not is_on_floor():
-		if velocity.y < 0:
+		if is_wall_sliding:
+			_play("fall")
+		elif velocity.y < 0:
 			_play("double_jump" if jump_count >= 2 else "jump")
 		else:
 			_play("fall")
