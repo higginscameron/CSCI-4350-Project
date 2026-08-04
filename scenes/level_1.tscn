@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" path="res://actors/enemies/ghost/ghost.tscn" id="15_6dial"]
 [ext_resource type="PackedScene" path="res://actors/traps/block.tscn" id="16_7nomh"]
 [ext_resource type="PackedScene" path="res://actors/traps/fire.tscn" id="17_isj1j"]
+[ext_resource type="PackedScene" path="res://actors/npcs/friend.tscn" id="18_x2xxo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rus8k"]
 texture = ExtResource("2_bswci")
@@ -869,6 +870,16 @@ position = Vector2(614, 247)
 
 [node name="Spikes97" parent="." unique_id=179689064 instance=ExtResource("6_fcfvj")]
 position = Vector2(585, 247)
+
+[node name="Friend" parent="." unique_id=556329641 instance=ExtResource("18_x2xxo")]
+position = Vector2(1196, 689)
+rotation = 1.5707964
+character_name = "Mask Dude"
+
+[node name="Friend2" parent="." unique_id=945836991 instance=ExtResource("18_x2xxo")]
+position = Vector2(592, 335)
+rotation = 1.5707964
+character_name = "Ninja Frog"
 
 [connection signal="pressed" from="PauseLayer/Pause/MarginContainer/VBoxContainer/Resume" to="PauseLayer/Pause" method="_on_resume_pressed"]
 [connection signal="pressed" from="PauseLayer/Pause/MarginContainer/VBoxContainer/Restart" to="PauseLayer/Pause" method="_on_restart_pressed"]

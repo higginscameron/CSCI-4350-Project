@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" uid="uid://bq2wtxk8m5hrf" path="res://actors/npcs/friend.gd" id="1_script"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
+size = Vector2(14, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rescue"]
+size = Vector2(18, 32)
+
+[node name="Friend" type="CharacterBody2D"]
+script = ExtResource("1_script")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = -1.570796
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = -1.570796
+shape = SubResource("RectangleShape2D_body")
+
+[node name="RescueArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RescueArea"]
+rotation = -1.570796
+shape = SubResource("RectangleShape2D_rescue")
