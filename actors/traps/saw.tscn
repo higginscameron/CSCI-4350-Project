@@ -71,6 +71,8 @@ animations = [{
 radius = 16.0
 
 [node name="Saw" type="Area2D" unique_id=1734736719]
+collision_layer = 1
+collision_mask = 4
 script = ExtResource("2_saw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1161577813]

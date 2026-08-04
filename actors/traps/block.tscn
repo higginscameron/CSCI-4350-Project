@@ -1,0 +1,75 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Script" uid="uid://b3k2h8mq1wtxa" path="res://actors/traps/block.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://cmd8ms5gxpl7y" path="res://assets/Traps/Blocks/Idle.png" id="2_idle"]
+[ext_resource type="Texture2D" uid="uid://3dfgwbq4t6co" path="res://assets/Traps/Blocks/HitTop (22x22).png" id="3_hittop"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hittop0"]
+atlas = ExtResource("3_hittop")
+region = Rect2(0, 0, 22, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hittop1"]
+atlas = ExtResource("3_hittop")
+region = Rect2(22, 0, 22, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hittop2"]
+atlas = ExtResource("3_hittop")
+region = Rect2(44, 0, 22, 22)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_block"]
+animations = [{
+"frames": [
+{
+"duration": 1.0,
+"texture": ExtResource("2_idle")
+}
+],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [
+{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hittop0")
+},
+{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hittop1")
+},
+{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hittop2")
+}
+],
+"loop": false,
+"name": &"hit_top",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
+size = Vector2(22, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_top"]
+size = Vector2(20, 4)
+
+[node name="Block" type="AnimatableBody2D"]
+collision_layer = 1
+collision_mask = 0
+script = ExtResource("1_script")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_block")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_body")
+
+[node name="TopDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopDetector"]
+position = Vector2(0, -11)
+shape = SubResource("RectangleShape2D_top")

@@ -15,8 +15,7 @@ const CHARACTER_FRAMES = {
 
 @export var current_character: String = "Pink Man"
 
-var health = 3
-var spawn_position = Vector2.ZERO
+var health = 20000
 var is_hit = false
 var jump_count = 0
 var is_dying = false
@@ -24,7 +23,6 @@ var is_wall_sliding = false
 
 func _ready() -> void:
 	add_to_group("player")
-	spawn_position = global_position
 	$AnimatedSprite2D.animation_finished.connect(_on_animation_finished)
 	set_character(current_character)
 
@@ -152,17 +150,4 @@ func die() -> void:
 	$AnimatedSprite2D.modulate = Color(1, 1, 1, 1)
 	await get_tree().create_timer(0.2).timeout
 
-	respawn()
-
-
-func respawn() -> void:
-	health = 3
-	is_hit = false
-	is_dying = false
-	global_position = spawn_position
-	velocity = Vector2.ZERO
-	modulate = Color(1, 1, 1, 1)
-	$AnimatedSprite2D.modulate = Color(1, 1, 1, 1)
-	scale = Vector2.ONE
-	set_physics_process(true)
-	$AnimatedSprite2D.play("idle")
+	get_tree().reload_current_scene()
