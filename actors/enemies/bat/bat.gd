@@ -7,7 +7,6 @@ const STOMP_BOUNCE = -250.0
 @export var horizontal_range: float = 64.0
 @export var vertical_range: float = 32.0
 @export var speed: float = 40.0
-
 ## Brief hover pause after reaching a waypoint before picking a new one.
 @export var retarget_pause: float = 0.4
 
@@ -16,12 +15,10 @@ var _origin: Vector2
 var _target: Vector2
 var _is_waiting = false
 
-
 func _ready() -> void:
 	add_to_group("enemies")
 	$AnimatedSprite2D.animation_finished.connect(_on_animation_finished)
 	$DetectionArea.body_entered.connect(_on_detection_area_body_entered)
-
 	_origin = global_position
 	_pick_new_target()
 	_play("flying")
@@ -33,14 +30,12 @@ func _physics_process(_delta: float) -> void:
 		return
 
 	var to_target = _target - global_position
-
 	if to_target.length() <= 2.0:
 		_wait_and_retarget()
 		return
 
 	velocity = to_target.normalized() * speed
 	move_and_slide()
-
 	$AnimatedSprite2D.flip_h = velocity.x < 0
 	_play("flying")
 
@@ -48,22 +43,15 @@ func _physics_process(_delta: float) -> void:
 func _wait_and_retarget() -> void:
 	_is_waiting = true
 	velocity = Vector2.ZERO
-
 	await get_tree().create_timer(retarget_pause).timeout
-
 	if is_dead or not is_inside_tree():
 		return
-
 	_pick_new_target()
 	_is_waiting = false
 
 
 func _pick_new_target() -> void:
-	var offset = Vector2(
-		randf_range(-horizontal_range, horizontal_range),
-		randf_range(-vertical_range, vertical_range)
-	)
-
+	var offset = Vector2(randf_range(-horizontal_range, horizontal_range), randf_range(-vertical_range, vertical_range))
 	_target = _origin + offset
 
 
@@ -90,12 +78,7 @@ func _on_detection_area_body_entered(body: Node) -> void:
 func _die(player: Node) -> void:
 	is_dead = true
 	velocity = Vector2.ZERO
-
 	$DetectionArea/CollisionShape2D.set_deferred("disabled", true)
 	$CollisionShape2D.set_deferred("disabled", true)
-
-	if player.has_method("play_stomp_sound"):
-		player.play_stomp_sound()
-
 	player.velocity.y = STOMP_BOUNCE
 	_play("hit")

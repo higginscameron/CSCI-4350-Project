@@ -10,7 +10,6 @@ const HAZARD_CHECK_DISTANCE = 14.0
 
 var is_dead = false
 
-
 func _ready() -> void:
 	add_to_group("enemies")
 	$AnimatedSprite2D.animation_finished.connect(_on_animation_finished)
@@ -42,9 +41,7 @@ func _physics_process(delta: float) -> void:
 func _hazard_ahead() -> bool:
 	if not $HazardCheck.is_colliding():
 		return false
-
 	var collider = $HazardCheck.get_collider()
-
 	return collider != null and collider.is_in_group("hazards")
 
 
@@ -66,13 +63,8 @@ func _on_detection_area_body_entered(body: Node) -> void:
 func _die(player: Node) -> void:
 	is_dead = true
 	velocity = Vector2.ZERO
-
 	$DetectionArea/CollisionShape2D.set_deferred("disabled", true)
 	$CollisionShape2D.set_deferred("disabled", true)
-
-	if player.has_method("play_stomp_sound"):
-		player.play_stomp_sound()
-
 	player.velocity.y = STOMP_BOUNCE
 	_play("hit")
 
