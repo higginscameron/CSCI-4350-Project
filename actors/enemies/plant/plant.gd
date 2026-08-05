@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 const DAMAGE = 1
 const STOMP_BOUNCE = -250.0
-const FIRE_COOLDOWN = 1.6
+const FIRE_COOLDOWN = 0.9
 const LAUNCH_FRAME = 4
 
 @export var facing_direction: float = -1.0
