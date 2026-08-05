@@ -15,6 +15,10 @@ run/main_scene="uid://0qba16j8bu3t"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+RescueTracker="*res://autoload/rescue_tracker.gd"
+
 [display]
 
 window/size/viewport_width=1920
