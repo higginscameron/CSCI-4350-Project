@@ -60,6 +60,7 @@ func _vanish() -> void:
 	$CollisionShape2D.set_deferred("disabled", true)
 	$AnimatedSprite2D.play("desappear")
 	await $AnimatedSprite2D.animation_finished
+
 	if not is_dead:
 		$AnimatedSprite2D.visible = false
 
@@ -68,10 +69,13 @@ func _reappear() -> void:
 	$AnimatedSprite2D.visible = true
 	$AnimatedSprite2D.play("appear")
 	await $AnimatedSprite2D.animation_finished
+
 	if is_dead:
 		return
+
 	$DetectionArea/CollisionShape2D.set_deferred("disabled", false)
 	$CollisionShape2D.set_deferred("disabled", false)
+
 	is_hidden = false
 	_play("idle")
 
@@ -99,7 +103,14 @@ func _on_detection_area_body_entered(body: Node) -> void:
 func _die(player: Node) -> void:
 	is_dead = true
 	velocity = Vector2.ZERO
+
 	$DetectionArea/CollisionShape2D.set_deferred("disabled", true)
 	$CollisionShape2D.set_deferred("disabled", true)
+
+	# Play the player's stomp sound
+	if player.has_method("play_stomp_sound"):
+		player.play_stomp_sound()
+
 	player.velocity.y = STOMP_BOUNCE
+
 	_play("hit")
