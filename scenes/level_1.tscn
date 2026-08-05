@@ -17,10 +17,12 @@
 [ext_resource type="Texture2D" uid="uid://caj1enip18510" path="res://scenes/Background/Pause_Menu1.png" id="10_pausebg"]
 [ext_resource type="Texture2D" uid="uid://dn6je6th7mrkx" path="res://assets/Menu/Buttons/Play.png" id="10_playicon"]
 [ext_resource type="Texture2D" uid="uid://cxj1b4onp01rw" path="res://assets/Menu/Buttons/Settings.png" id="10_settingsicon"]
+[ext_resource type="AudioStream" uid="uid://n61vqhlosn0e" path="res://audio/rock-sliding.mp3" id="10_x2fux"]
 [ext_resource type="PackedScene" path="res://actors/enemies/mushroom/mushroom.tscn" id="12_mushroom"]
 [ext_resource type="PackedScene" path="res://actors/enemies/plant/plant.tscn" id="14_2aecg"]
 [ext_resource type="PackedScene" path="res://actors/enemies/ghost/ghost.tscn" id="15_6dial"]
 [ext_resource type="PackedScene" path="res://actors/traps/block.tscn" id="16_7nomh"]
+[ext_resource type="AudioStream" uid="uid://dwylhttosn425" path="res://audio/Thinking Music.mp3" id="16_wbtxt"]
 [ext_resource type="PackedScene" path="res://actors/traps/fire.tscn" id="17_isj1j"]
 [ext_resource type="PackedScene" path="res://actors/npcs/friend.tscn" id="18_x2xxo"]
 
@@ -365,6 +367,9 @@ volume_db = 5.168
 stream = ExtResource("9_d5akn")
 volume_db = 6.46
 
+[node name="WallSlideSFX" type="AudioStreamPlayer" parent="Player" unique_id=1140699126]
+stream = ExtResource("10_x2fux")
+
 [node name="Mushroom" parent="." unique_id=714549181 instance=ExtResource("12_mushroom")]
 position = Vector2(300, 990)
 
@@ -377,7 +382,7 @@ position = Vector2(1773, 986)
 [node name="PauseLayer" type="CanvasLayer" parent="." unique_id=294157448]
 process_mode = 3
 
-[node name="Pause" type="Control" parent="PauseLayer" unique_id=660066186]
+[node name="Pause" type="Control" parent="PauseLayer" unique_id=660066186 node_paths=PackedStringArray("pause_music")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -386,6 +391,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("4_5xbjy")
+pause_music = NodePath("../PauseMusic")
 
 [node name="TextureRect" type="TextureRect" parent="PauseLayer/Pause" unique_id=274359248]
 modulate = Color(1, 1, 1, 0.5686275)
@@ -490,6 +496,10 @@ expand_icon = true
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PauseLayer/Pause" unique_id=302715165]
 process_mode = 3
 libraries/ = SubResource("AnimationLibrary_15mv3")
+
+[node name="PauseMusic" type="AudioStreamPlayer" parent="PauseLayer" unique_id=1161493648]
+stream = ExtResource("16_wbtxt")
+volume_db = 13.565
 
 [node name="Spikes" parent="." unique_id=477664741 instance=ExtResource("6_fcfvj")]
 position = Vector2(520, 920)

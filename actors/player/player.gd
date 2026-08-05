@@ -20,6 +20,7 @@ const CHARACTER_FRAMES = {
 @onready var stomp_sfx: AudioStreamPlayer = $BiteTheCurbSFX
 @onready var death_sfx: AudioStreamPlayer = $DeathSFX
 @onready var hurt_sfx: AudioStreamPlayer = $HurtSFX
+@onready var wall_slide_sfx: AudioStreamPlayer = $WallSlideSFX
 
 var health = 3
 var is_hit = false
@@ -84,6 +85,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 	_update_walking_sound(direction)
+	_update_wall_slide_sound()
 	_update_animation(direction)
 
 
@@ -101,6 +103,21 @@ func _update_walking_sound(direction: float) -> void:
 	else:
 		if walking_sfx.playing:
 			walking_sfx.stop()
+
+
+func _update_wall_slide_sound() -> void:
+	var should_play := (
+		is_wall_sliding
+		and not is_hit
+		and not is_dying
+	)
+
+	if should_play:
+		if not wall_slide_sfx.playing:
+			wall_slide_sfx.play()
+	else:
+		if wall_slide_sfx.playing:
+			wall_slide_sfx.stop()
 
 
 func _update_animation(direction: float) -> void:
@@ -155,6 +172,7 @@ func take_damage(amount: int) -> void:
 
 	is_hit = true
 	walking_sfx.stop()
+	wall_slide_sfx.stop()
 
 	# Restart the hurt sound cleanly if the player is hit again quickly.
 	if hurt_sfx.playing:
@@ -187,6 +205,7 @@ func die() -> void:
 	jumping_sfx.stop()
 	stomp_sfx.stop()
 	hurt_sfx.stop()
+	wall_slide_sfx.stop()
 
 	death_sfx.play()
 
