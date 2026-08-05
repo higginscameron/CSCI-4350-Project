@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" uid="uid://c1f8n4wq3rzta" path="res://actors/traps/spiked_ball.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://dfn58vkddmpt2" path="res://assets/Traps/Spiked Ball/Chain.png" id="2_chain"]
+[ext_resource type="Texture2D" uid="uid://bh7rg7kc0yc3n" path="res://assets/Traps/Spiked Ball/Spiked Ball.png" id="3_ball"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ball"]
+radius = 12.0
+
+[node name="SpikedBall" type="Node2D"]
+script = ExtResource("1_script")
+
+[node name="Chain" type="Node2D" parent="."]
+
+[node name="Link0" type="Sprite2D" parent="Chain"]
+position = Vector2(0, 0)
+texture = ExtResource("2_chain")
+
+[node name="Link1" type="Sprite2D" parent="Chain"]
+position = Vector2(0, 8)
+texture = ExtResource("2_chain")
+
+[node name="Link2" type="Sprite2D" parent="Chain"]
+position = Vector2(0, 16)
+texture = ExtResource("2_chain")
+
+[node name="Link3" type="Sprite2D" parent="Chain"]
+position = Vector2(0, 24)
+texture = ExtResource("2_chain")
+
+[node name="Link4" type="Sprite2D" parent="Chain"]
+position = Vector2(0, 32)
+texture = ExtResource("2_chain")
+
+[node name="Link5" type="Sprite2D" parent="Chain"]
+position = Vector2(0, 40)
+texture = ExtResource("2_chain")
+
+[node name="Link6" type="Sprite2D" parent="Chain"]
+position = Vector2(0, 48)
+texture = ExtResource("2_chain")
+
+[node name="Link7" type="Sprite2D" parent="Chain"]
+position = Vector2(0, 56)
+texture = ExtResource("2_chain")
+
+[node name="Ball" type="Area2D" parent="."]
+position = Vector2(0, 64)
+collision_layer = 0
+collision_mask = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Ball"]
+texture = ExtResource("3_ball")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
+shape = SubResource("CircleShape2D_ball")
