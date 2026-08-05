@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://u5n6jin41614" path="res://scenes/MainMenu.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://bg3l1v75y4371" path="res://assets/Menu/Main Menu.png" id="2_brfhc"]
-[ext_resource type="AudioStream" uid="uid://dsumgocyigan3" path="res://audio/fairy-tail-ost-battle-epic-music-mix-ihl-50-k.mp3" id="3_vscqr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vscqr"]
 bg_color = Color(0.004019165, 0.004019165, 0.004019165, 0)
@@ -125,12 +124,3 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_wlbmf")
 text = "Quit"
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=556907136]
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1597021750]
-stream = ExtResource("3_vscqr")
-volume_db = -15.0
-autoplay = true
-mix_target = 1
-parameters/looping = true
