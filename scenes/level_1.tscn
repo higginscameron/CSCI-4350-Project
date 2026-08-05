@@ -19,6 +19,10 @@
 [ext_resource type="PackedScene" path="res://actors/traps/fire.tscn" id="17_isj1j"]
 [ext_resource type="PackedScene" path="res://actors/npcs/friend.tscn" id="18_x2xxo"]
 [ext_resource type="PackedScene" path="res://actors/traps/rock_head.tscn" id="19_2cbcq"]
+[ext_resource type="Script" uid="uid://b5k2s82yie6k5" path="res://scenes/level_1.gd" id="20_level1"]
+[ext_resource type="PackedScene" path="res://actors/items/apple/apple.tscn" id="21_apple"]
+[ext_resource type="PackedScene" path="res://actors/items/pineapple/pineapple.tscn" id="22_pineapple"]
+[ext_resource type="PackedScene" path="res://actors/items/end/end.tscn" id="23_end"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rus8k"]
 texture = ExtResource("2_bswci")
@@ -320,6 +324,7 @@ _data = {
 }
 
 [node name="Level1" type="Node2D" unique_id=1839125871]
+script = ExtResource("20_level1")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=100923810]
 position = Vector2(603, 377)
@@ -352,7 +357,6 @@ position = Vector2(1773, 986)
 
 [node name="PauseLayer" type="CanvasLayer" parent="." unique_id=294157448]
 process_mode = 3
-visible = false
 
 [node name="Pause" type="Control" parent="PauseLayer" unique_id=660066186]
 process_mode = 3
@@ -1032,6 +1036,27 @@ position = Vector2(1831, 344)
 
 [node name="Fire58" parent="." unique_id=786886466 instance=ExtResource("17_isj1j")]
 position = Vector2(1846, 344)
+
+[node name="Apple" parent="." unique_id=1950516524 instance=ExtResource("21_apple")]
+position = Vector2(1725, 994)
+
+[node name="Apple2" parent="." unique_id=377532876 instance=ExtResource("21_apple")]
+position = Vector2(342, 482)
+
+[node name="Apple3" parent="." unique_id=56865751 instance=ExtResource("21_apple")]
+position = Vector2(954, 220)
+
+[node name="Pineapple" parent="." unique_id=411015950 instance=ExtResource("22_pineapple")]
+position = Vector2(1374, 317)
+
+[node name="Pineapple2" parent="." unique_id=1835550618 instance=ExtResource("22_pineapple")]
+position = Vector2(1230, 650)
+
+[node name="Pineapple3" parent="." unique_id=61549403 instance=ExtResource("22_pineapple")]
+position = Vector2(1707, 209)
+
+[node name="End" parent="." unique_id=1095127778 instance=ExtResource("23_end")]
+position = Vector2(1897, 319)
 
 [connection signal="pressed" from="PauseLayer/Pause/MarginContainer/VBoxContainer/Resume" to="PauseLayer/Pause" method="_on_resume_pressed"]
 [connection signal="pressed" from="PauseLayer/Pause/MarginContainer/VBoxContainer/Restart" to="PauseLayer/Pause" method="_on_restart_pressed"]

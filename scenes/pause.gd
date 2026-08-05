@@ -36,4 +36,6 @@ func _on_quit_pressed() -> void:
 	get_tree().quit()
 
 func _on_restart_pressed() -> void:
+	DeathTracker.reset()
+	get_tree().paused = false
 	get_tree().reload_current_scene()

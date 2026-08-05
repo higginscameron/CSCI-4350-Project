@@ -5,6 +5,7 @@ const JUMP_VELOCITY = -400.0
 const GRAVITY = 980.0
 const WALL_SLIDE_GRAVITY = 150.0
 const MAX_JUMPS = 2
+const MAX_HEALTH = 3
 
 const CHARACTER_FRAMES = {
 	"Pink Man": preload("res://actors/player/frames/pink_man.tres"),
@@ -15,7 +16,7 @@ const CHARACTER_FRAMES = {
 
 @export var current_character: String = "Pink Man"
 
-var health = 20000
+var health = 3
 var is_hit = false
 var jump_count = 0
 var is_dying = false
@@ -122,6 +123,12 @@ func take_damage(amount: int) -> void:
 		die()
 
 
+func heal(amount: int) -> void:
+	# max(health, MAX_HEALTH) keeps this a no-op above MAX_HEALTH instead of
+	# slamming an inflated testing health value back down to 3.
+	health = min(health + amount, max(health, MAX_HEALTH))
+
+
 func _on_animation_finished() -> void:
 	if $AnimatedSprite2D.animation == "hit":
 		is_hit = false
@@ -132,6 +139,7 @@ func die() -> void:
 		return
 
 	is_dying = true
+	DeathTracker.register_death()
 	$AnimatedSprite2D.play("hit")
 	velocity = Vector2.ZERO
 	set_physics_process(false)
