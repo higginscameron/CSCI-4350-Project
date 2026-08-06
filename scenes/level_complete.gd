@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+@onready var DeathTracker: Node = get_node("/root/DeathTracker")
+
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	layer = 10
@@ -35,6 +37,12 @@ func _ready() -> void:
 	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	vbox.add_child(title)
 
+	var subtitle = Label.new()
+	subtitle.text = "Loading Level 2..."
+	subtitle.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	subtitle.modulate = Color(1, 1, 1, 0.8)
+	vbox.add_child(subtitle)
+
 	var restart_button = Button.new()
 	restart_button.text = "Restart"
 	restart_button.pressed.connect(_on_restart_pressed)
@@ -45,11 +53,21 @@ func _ready() -> void:
 	menu_button.pressed.connect(_on_menu_pressed)
 	vbox.add_child(menu_button)
 
+	var transition_timer = get_tree().create_timer(1.2)
+	transition_timer.timeout.connect(_on_next_level_pressed)
+
 
 func _on_restart_pressed() -> void:
 	DeathTracker.reset()
 	get_tree().paused = false
 	get_tree().reload_current_scene()
+	queue_free()
+
+
+func _on_next_level_pressed() -> void:
+	DeathTracker.reset()
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://scenes/level_2.tscn")
 	queue_free()
 
 
