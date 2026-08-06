@@ -207,6 +207,7 @@ func die() -> void:
 		return
 
 	is_dying = true
+	death_sfx.play()
 	$AnimatedSprite2D.play("hit")
 	velocity = Vector2.ZERO
 	set_physics_process(false)
