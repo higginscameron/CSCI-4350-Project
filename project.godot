@@ -18,6 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 RescueTracker="*res://autoload/rescue_tracker.gd"
+PineappleTracker="*res://autoload/pineapple_tracker.gd"
+DeathTracker="*res://autoload/death_tracker.gd"
 
 [display]
 

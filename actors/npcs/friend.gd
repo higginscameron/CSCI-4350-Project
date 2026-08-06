@@ -17,6 +17,7 @@ var is_rescued = false
 
 func _ready() -> void:
 	add_to_group("npcs")
+	RescueTracker.register_friend_spawn()
 
 	if not CHARACTER_FRAMES.has(character_name):
 		push_warning("Unknown character: %s" % character_name)

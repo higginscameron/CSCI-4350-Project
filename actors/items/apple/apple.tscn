@@ -1,0 +1,147 @@
+[gd_scene load_steps=20 format=3]
+
+[ext_resource type="Script" path="res://actors/items/apple/apple.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://cma32jeep3lnh" path="res://assets/Items/Fruits/Apple.png" id="2_apple"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apple0"]
+atlas = ExtResource("2_apple")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apple1"]
+atlas = ExtResource("2_apple")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apple2"]
+atlas = ExtResource("2_apple")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apple3"]
+atlas = ExtResource("2_apple")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apple4"]
+atlas = ExtResource("2_apple")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apple5"]
+atlas = ExtResource("2_apple")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apple6"]
+atlas = ExtResource("2_apple")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apple7"]
+atlas = ExtResource("2_apple")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apple8"]
+atlas = ExtResource("2_apple")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apple9"]
+atlas = ExtResource("2_apple")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apple10"]
+atlas = ExtResource("2_apple")
+region = Rect2(320, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apple11"]
+atlas = ExtResource("2_apple")
+region = Rect2(352, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apple12"]
+atlas = ExtResource("2_apple")
+region = Rect2(384, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apple13"]
+atlas = ExtResource("2_apple")
+region = Rect2(416, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apple14"]
+atlas = ExtResource("2_apple")
+region = Rect2(448, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apple15"]
+atlas = ExtResource("2_apple")
+region = Rect2(480, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apple16"]
+atlas = ExtResource("2_apple")
+region = Rect2(512, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_apple"]
+animations = [{
+"frames": [ {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apple0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apple1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apple2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apple3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apple4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apple5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apple6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apple7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apple8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apple9")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apple10")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apple11")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apple12")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apple13")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apple14")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apple15")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apple16")
+} ],
+"loop": true,
+"name": &"idle",
+"speed": 12.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_apple"]
+radius = 10.0
+
+[node name="Apple" type="Area2D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_script")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_apple")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_apple")

@@ -1,6 +1,6 @@
 extends Area2D
 
-const SPEED = 140.0
+const SPEED = 360.0
 const DAMAGE = 1
 const LIFETIME = 3.0
 

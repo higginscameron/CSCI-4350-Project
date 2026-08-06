@@ -1,0 +1,147 @@
+[gd_scene load_steps=20 format=3]
+
+[ext_resource type="Script" path="res://actors/items/pineapple/pineapple.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://dwl8fjmj80wyg" path="res://assets/Items/Fruits/Pineapple.png" id="2_pineapple"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pineapple0"]
+atlas = ExtResource("2_pineapple")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pineapple1"]
+atlas = ExtResource("2_pineapple")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pineapple2"]
+atlas = ExtResource("2_pineapple")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pineapple3"]
+atlas = ExtResource("2_pineapple")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pineapple4"]
+atlas = ExtResource("2_pineapple")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pineapple5"]
+atlas = ExtResource("2_pineapple")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pineapple6"]
+atlas = ExtResource("2_pineapple")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pineapple7"]
+atlas = ExtResource("2_pineapple")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pineapple8"]
+atlas = ExtResource("2_pineapple")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pineapple9"]
+atlas = ExtResource("2_pineapple")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pineapple10"]
+atlas = ExtResource("2_pineapple")
+region = Rect2(320, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pineapple11"]
+atlas = ExtResource("2_pineapple")
+region = Rect2(352, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pineapple12"]
+atlas = ExtResource("2_pineapple")
+region = Rect2(384, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pineapple13"]
+atlas = ExtResource("2_pineapple")
+region = Rect2(416, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pineapple14"]
+atlas = ExtResource("2_pineapple")
+region = Rect2(448, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pineapple15"]
+atlas = ExtResource("2_pineapple")
+region = Rect2(480, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pineapple16"]
+atlas = ExtResource("2_pineapple")
+region = Rect2(512, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pineapple"]
+animations = [{
+"frames": [ {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pineapple0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pineapple1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pineapple2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pineapple3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pineapple4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pineapple5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pineapple6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pineapple7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pineapple8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pineapple9")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pineapple10")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pineapple11")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pineapple12")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pineapple13")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pineapple14")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pineapple15")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pineapple16")
+} ],
+"loop": true,
+"name": &"idle",
+"speed": 12.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pineapple"]
+radius = 10.0
+
+[node name="Pineapple" type="Area2D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_script")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_pineapple")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_pineapple")
