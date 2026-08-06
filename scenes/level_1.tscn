@@ -1041,7 +1041,7 @@ position = Vector2(1846, 344)
 position = Vector2(1725, 994)
 
 [node name="Apple2" parent="." unique_id=377532876 instance=ExtResource("21_apple")]
-position = Vector2(342, 482)
+position = Vector2(340, 440)
 
 [node name="Apple3" parent="." unique_id=56865751 instance=ExtResource("21_apple")]
 position = Vector2(954, 220)

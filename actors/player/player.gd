@@ -16,7 +16,7 @@ const CHARACTER_FRAMES = {
 
 @export var current_character: String = "Pink Man"
 
-var health = 3
+var health = 20000
 var is_hit = false
 var jump_count = 0
 var is_dying = false
