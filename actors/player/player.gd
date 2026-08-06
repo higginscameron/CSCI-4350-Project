@@ -16,13 +16,13 @@ const CHARACTER_FRAMES = {
 
 @export var current_character: String = "Pink Man"
 
-@onready var walking_sfx: AudioStreamPlayer = $WalkingSFX
-@onready var jumping_sfx: AudioStreamPlayer = $JumpingSFX
-@onready var stomp_sfx: AudioStreamPlayer = $BiteTheCurbSFX
-@onready var death_sfx: AudioStreamPlayer = $DeathSFX
-@onready var hurt_sfx: AudioStreamPlayer = $HurtSFX
-@onready var wall_slide_sfx: AudioStreamPlayer = $WallSlideSFX
-@onready var DeathTracker: Node = get_node("/root/DeathTracker")
+@onready var walking_sfx: AudioStreamPlayer = get_node_or_null("WalkingSFX") as AudioStreamPlayer
+@onready var jumping_sfx: AudioStreamPlayer = get_node_or_null("JumpingSFX") as AudioStreamPlayer
+@onready var stomp_sfx: AudioStreamPlayer = get_node_or_null("BiteTheCurbSFX") as AudioStreamPlayer
+@onready var death_sfx: AudioStreamPlayer = get_node_or_null("DeathSFX") as AudioStreamPlayer
+@onready var hurt_sfx: AudioStreamPlayer = get_node_or_null("HurtSFX") as AudioStreamPlayer
+@onready var wall_slide_sfx: AudioStreamPlayer = get_node_or_null("WallSlideSFX") as AudioStreamPlayer
+@onready var DeathTracker: Node = get_node_or_null("/root/DeathTracker")
 
 var health = 3
 var is_hit = false
@@ -60,7 +60,7 @@ func _physics_process(delta: float) -> void:
 		if is_on_floor():
 			velocity.y = JUMP_VELOCITY
 			jump_count += 1
-			jumping_sfx.play()
+			_play_sfx(jumping_sfx)
 
 		elif is_touching_wall and not is_on_floor():
 			velocity.y = JUMP_VELOCITY
@@ -70,12 +70,12 @@ func _physics_process(delta: float) -> void:
 
 			jump_count = 0
 			_play("wall_jump")
-			jumping_sfx.play()
+			_play_sfx(jumping_sfx)
 
 		elif jump_count < MAX_JUMPS:
 			velocity.y = JUMP_VELOCITY
 			jump_count += 1
-			jumping_sfx.play()
+			_play_sfx(jumping_sfx)
 
 	var direction = Input.get_axis("move_left", "move_right")
 
@@ -100,11 +100,9 @@ func _update_walking_sound(direction: float) -> void:
 	)
 
 	if is_running:
-		if not walking_sfx.playing:
-			walking_sfx.play()
+		_play_sfx(walking_sfx)
 	else:
-		if walking_sfx.playing:
-			walking_sfx.stop()
+		_stop_sfx(walking_sfx)
 
 
 func _update_wall_slide_sound() -> void:
@@ -115,11 +113,25 @@ func _update_wall_slide_sound() -> void:
 	)
 
 	if should_play:
-		if not wall_slide_sfx.playing:
-			wall_slide_sfx.play()
+		_play_sfx(wall_slide_sfx)
 	else:
-		if wall_slide_sfx.playing:
-			wall_slide_sfx.stop()
+		_stop_sfx(wall_slide_sfx)
+
+
+func _play_sfx(sfx: AudioStreamPlayer) -> void:
+	if sfx == null:
+		return
+
+	if not sfx.playing:
+		sfx.play()
+
+
+func _stop_sfx(sfx: AudioStreamPlayer) -> void:
+	if sfx == null:
+		return
+
+	if sfx.playing:
+		sfx.stop()
 
 
 func _update_animation(direction: float) -> void:
@@ -173,14 +185,12 @@ func take_damage(amount: int) -> void:
 		return
 
 	is_hit = true
-	walking_sfx.stop()
-	wall_slide_sfx.stop()
+	_stop_sfx(walking_sfx)
+	_stop_sfx(wall_slide_sfx)
 
 	# Restart the hurt sound cleanly if the player is hit again quickly.
-	if hurt_sfx.playing:
-		hurt_sfx.stop()
-
-	hurt_sfx.play()
+	_stop_sfx(hurt_sfx)
+	_play_sfx(hurt_sfx)
 	$AnimatedSprite2D.play("hit")
 
 
@@ -196,10 +206,8 @@ func _on_animation_finished() -> void:
 
 
 func play_stomp_sound() -> void:
-	if stomp_sfx.playing:
-		stomp_sfx.stop()
-
-	stomp_sfx.play()
+	_stop_sfx(stomp_sfx)
+	_play_sfx(stomp_sfx)
 
 
 func die() -> void:
@@ -207,7 +215,9 @@ func die() -> void:
 		return
 
 	is_dying = true
-	death_sfx.play()
+	if DeathTracker != null:
+		DeathTracker.register_death()
+	_play_sfx(death_sfx)
 	$AnimatedSprite2D.play("hit")
 	velocity = Vector2.ZERO
 	set_physics_process(false)
@@ -247,7 +257,7 @@ func die() -> void:
 	await get_tree().create_timer(0.2).timeout
 
 	# Let the death sound finish before reloading.
-	if death_sfx.playing:
+	if death_sfx != null and death_sfx.playing:
 		await death_sfx.finished
 
 	get_tree().reload_current_scene()
