@@ -64,7 +64,7 @@ func _on_quit_pressed() -> void:
 
 
 func _on_restart_pressed() -> void:
-	DeathTracker.reset()
+	#DeathTracker.reset()
 	if pause_music != null:
 		pause_music.stop()
 

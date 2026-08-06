@@ -22,6 +22,7 @@ const CHARACTER_FRAMES = {
 @onready var death_sfx: AudioStreamPlayer = $DeathSFX
 @onready var hurt_sfx: AudioStreamPlayer = $HurtSFX
 @onready var wall_slide_sfx: AudioStreamPlayer = $WallSlideSFX
+@onready var DeathTracker: Node = get_node("/root/DeathTracker")
 
 var health = 3
 var is_hit = false
@@ -206,17 +207,6 @@ func die() -> void:
 		return
 
 	is_dying = true
-	DeathTracker.register_death()
-	is_hit = true
-
-	walking_sfx.stop()
-	jumping_sfx.stop()
-	stomp_sfx.stop()
-	hurt_sfx.stop()
-	wall_slide_sfx.stop()
-
-	death_sfx.play()
-
 	$AnimatedSprite2D.play("hit")
 	velocity = Vector2.ZERO
 	set_physics_process(false)
