@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://u5n6jin41614" path="res://scenes/MainMenu.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://bg3l1v75y4371" path="res://assets/Menu/Main Menu.png" id="2_brfhc"]
 [ext_resource type="AudioStream" uid="uid://dsumgocyigan3" path="res://audio/fairy-tail-ost-battle-epic-music-mix-ihl-50-k.mp3" id="3_vscqr"]
+[ext_resource type="Texture2D" uid="uid://c10da36vckleq" path="res://assets/Enemies/Zombie Enemy/Zombie_Big/Zombie_Big_Up_Second-Attack-Sheet15.png" id="4_zombie"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vscqr"]
 bg_color = Color(0.004019165, 0.004019165, 0.004019165, 0)
@@ -32,6 +33,119 @@ border_width_top = 6
 border_width_right = 6
 border_width_bottom = 6
 border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_zombie0"]
+atlas = ExtResource("4_zombie")
+region = Rect2(0, 0, 27, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_zombie1"]
+atlas = ExtResource("4_zombie")
+region = Rect2(27, 0, 27, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_zombie2"]
+atlas = ExtResource("4_zombie")
+region = Rect2(54, 0, 27, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_zombie3"]
+atlas = ExtResource("4_zombie")
+region = Rect2(81, 0, 27, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_zombie4"]
+atlas = ExtResource("4_zombie")
+region = Rect2(108, 0, 27, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_zombie5"]
+atlas = ExtResource("4_zombie")
+region = Rect2(135, 0, 27, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_zombie6"]
+atlas = ExtResource("4_zombie")
+region = Rect2(162, 0, 27, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_zombie7"]
+atlas = ExtResource("4_zombie")
+region = Rect2(189, 0, 27, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_zombie8"]
+atlas = ExtResource("4_zombie")
+region = Rect2(216, 0, 27, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_zombie9"]
+atlas = ExtResource("4_zombie")
+region = Rect2(243, 0, 27, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_zombie10"]
+atlas = ExtResource("4_zombie")
+region = Rect2(270, 0, 27, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_zombie11"]
+atlas = ExtResource("4_zombie")
+region = Rect2(297, 0, 27, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_zombie12"]
+atlas = ExtResource("4_zombie")
+region = Rect2(324, 0, 27, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_zombie13"]
+atlas = ExtResource("4_zombie")
+region = Rect2(351, 0, 27, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_zombie14"]
+atlas = ExtResource("4_zombie")
+region = Rect2(378, 0, 27, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_zombie"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_zombie0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_zombie1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_zombie2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_zombie3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_zombie4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_zombie5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_zombie6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_zombie7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_zombie8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_zombie9")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_zombie10")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_zombie11")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_zombie12")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_zombie13")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_zombie14")
+}],
+"loop": true,
+"name": &"zombie_big_up_second_attack",
+"speed": 50.0
+}]
 
 [node name="MainMenu" type="Control" unique_id=249887266]
 layout_mode = 3
@@ -127,6 +241,11 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_wlbmf")
 text = "Quit"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=556907136]
+position = Vector2(1650, 650)
+scale = Vector2(8, 8)
+sprite_frames = SubResource("SpriteFrames_zombie")
+animation = &"zombie_big_up_second_attack"
+autoplay = "zombie_big_up_second_attack"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1597021750]
 stream = ExtResource("3_vscqr")

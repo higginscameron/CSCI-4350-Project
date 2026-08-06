@@ -26,7 +26,7 @@
 [ext_resource type="PackedScene" path="res://actors/traps/fire.tscn" id="17_isj1j"]
 [ext_resource type="PackedScene" path="res://actors/npcs/friend.tscn" id="18_x2xxo"]
 [ext_resource type="PackedScene" path="res://actors/traps/rock_head.tscn" id="19_2cbcq"]
-[ext_resource type="Script" uid="uid://b5k2s82yie6k5" path="res://scenes/level_1.gd" id="20_level1"]
+[ext_resource type="Script" path="res://scenes/level_1.gd" id="20_level1"]
 [ext_resource type="PackedScene" path="res://actors/items/apple/apple.tscn" id="21_apple"]
 [ext_resource type="PackedScene" path="res://actors/items/pineapple/pineapple.tscn" id="22_pineapple"]
 [ext_resource type="PackedScene" path="res://actors/items/end/end.tscn" id="23_end"]
@@ -363,7 +363,7 @@ volume_db = -18.0
 
 [node name="BiteTheCurbSFX" type="AudioStreamPlayer" parent="Player" unique_id=518133860]
 stream = ExtResource("7_d5akn")
-volume_db = 14.957
+volume_db = 5.0
 
 [node name="DeathSFX" type="AudioStreamPlayer" parent="Player" unique_id=1040355828]
 stream = ExtResource("8_tr1x6")
@@ -371,7 +371,7 @@ volume_db = 5.168
 
 [node name="HurtSFX" type="AudioStreamPlayer" parent="Player" unique_id=1828498080]
 stream = ExtResource("9_d5akn")
-volume_db = 6.46
+volume_db = -3.0
 
 [node name="WallSlideSFX" type="AudioStreamPlayer" parent="Player" unique_id=1140699126]
 stream = ExtResource("10_x2fux")
@@ -505,7 +505,7 @@ libraries/ = SubResource("AnimationLibrary_15mv3")
 
 [node name="PauseMusic" type="AudioStreamPlayer" parent="PauseLayer" unique_id=1161493648]
 stream = ExtResource("16_wbtxt")
-volume_db = 13.565
+volume_db = 8.0
 
 [node name="Spikes" parent="." unique_id=477664741 instance=ExtResource("6_fcfvj")]
 position = Vector2(520, 920)
@@ -837,6 +837,7 @@ position = Vector2(904, 672)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=128500090]
 stream = ExtResource("10_music")
+volume_db = -8.0
 autoplay = true
 
 [node name="Plant" parent="." unique_id=246474012 instance=ExtResource("14_2aecg")]
